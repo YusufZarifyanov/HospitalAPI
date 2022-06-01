@@ -1,0 +1,27 @@
+version: '3.9'
+
+services:
+  # app:
+  #     container_name: app
+  #     env_file:
+  #       - ./.env.docker
+  #     restart: always
+  #     build: .
+  #     ports:
+  #       - "4000:4000"
+  #     command: npm run dev
+  #     links:
+  #       - mongo
+
+  mongo:
+      image: mongo:latest
+      environment:
+        MONGO_INITDB_ROOT_USERNAME: root
+        MONGO_INITDB_ROOT_PASSWORD: rootpassword
+      ports:
+        - 27017:27017
+      volumes:
+        - mongodb_data_container:/data/db
+
+volumes:
+  mongodb_data_container:
